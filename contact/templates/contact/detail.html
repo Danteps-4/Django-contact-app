@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %} {% block title %}Edit contact{% endblock %}{% block content %}
+<h1>Edit contact</h1>
+<div class="form-container">
+    <form action="" method="POST">
+        {{error}}{% csrf_token %} {{form.as_p}}
+        <button class="btn">Save</button>
+    </form>
+</div>
+{% endblock %}

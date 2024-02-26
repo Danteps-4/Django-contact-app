@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %} {% block title %}My contacts{% endblock %}{% block content %}
+<h1>My contacts</h1>
+
+<div class="contacts-container container">
+    {% for contact in contacts %}
+    <div class="contact">
+        <div class="contact-info">
+            <p class="name"><strong>Name:</strong> {{contact.name}}</p>
+            <p class="email"><strong>Email:</strong> {{contact.email}}</p>
+            <p class="phone"><strong>Phone number:</strong> {{contact.phone}}</p>
+        </div>
+        <div class="contact-buttons">
+            <a href="{% url 'contact:detail' contact.id %}" class="edit">Edit</a>
+            <a href="{% url 'contact:delete' contact.id %}" class="delete">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
