@@ -1,6 +1,13 @@
 {% extends 'core/base.html' %} {% block title %}My contacts{% endblock %}{% block content %}
 <h1>My contacts</h1>
 
+<div class="search-bar">
+    <form action="" method="get" class="search-form">
+        <input name="query" type="text" value="{{ query }}" placeholder="Look for a contact...">
+        <button class="btn">Search</button>
+    </form>
+</div>
+
 <div class="contacts-container container">
     {% for contact in contacts %}
     <div class="contact">

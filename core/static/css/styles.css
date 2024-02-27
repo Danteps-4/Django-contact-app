@@ -127,6 +127,10 @@ h1 {
 
 /* MY CONTACTS PAGE */
 
+.search-bar {
+    text-align: center;
+}
+
 .contacts-container {
     display: flex;
     flex-direction: column;

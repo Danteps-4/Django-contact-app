@@ -1,11 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 from .models import Contact
 from .forms import ContactForm
 
 # Create your views here.
 def view(request):
     contacts = Contact.objects.filter(created_by=request.user)
-    return render(request, "contact/view.html", {"contacts": contacts})
+    query = request.GET.get("query", "")
+
+    if query:
+        contacts = contacts.filter(Q(name__icontains=query) | Q(email__icontains=query))
+
+    return render(request, "contact/view.html", {"contacts": contacts, "query": query})
 
 def detail(request, pk):
     contact = get_object_or_404(Contact, pk=pk, created_by=request.user)
